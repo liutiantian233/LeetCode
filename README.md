@@ -2,7 +2,7 @@
 
 Break through LeetCode Leave no regrets with C++ OR Python
 
-<th width="宽度值或百分比">表头内容</th>
+<th width="95">表头内容</th>
 
 | NO.  | TITLE                                             | Solution | NOTE | Difficulty | HINT |
 | ---- | ------------------------------------------------- | -------- | ---- | ---------- | ---- |
