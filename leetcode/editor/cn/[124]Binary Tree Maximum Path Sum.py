@@ -67,27 +67,14 @@ class Tree:
                 self.queue.pop(0)
 
 class Solution:
-    def __init__(self):
-        self.maxSum = float("-inf")
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        def maxGain(node):
-            if not node:
-                return 0
-            leftGain = max(maxGain(node.left), 0)
-            rightGain = max(maxGain(node.right), 0)
-            priceNewpath = node.val + leftGain + rightGain
-            self.maxSum = max(self.maxSum, priceNewpath)
-            return node.val + max(leftGain, rightGain)
-
-        maxGain(root)
-        return self.maxSum
-        # path = 0
-        # print(root)
-        # return path
+        path = 0
+        print(root)
+        return path
 # leetcode submit region end(Prohibit modification and deletion)
 
 s = Solution()
 n = Tree()
-for i in [-10,9,20,None,None,15,7]:
+for i in [-10,9,20,0,0,15,7]:
     n.add(i)
-print(s.maxPathSum(n.root))
+print(n.root.left.left.val)
