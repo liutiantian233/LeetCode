@@ -41,4 +41,27 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
+        ret = ""
+        if len(num1) > len(num2):
+            big = num1[::-1]
+            small = num2[::-1] + (len(num1) - len(num2)) * "0"
+        else:
+            big = num2[::-1]
+            small = num1[::-1] + (len(num2) - len(num1)) * "0"
+        carry = 0
+        for index, i in enumerate(small):
+            small_target = i
+            big_target = big[index]
+            temp = int(small_target) + int(big_target) + carry
+            carry = temp // 10
+            if carry:
+                ret += str(temp)[-1]
+            else:
+                ret += str(temp)
+        if carry:
+            ret += str(carry)
+        return ret[::-1]
 # leetcode submit region end(Prohibit modification and deletion)
+
+s = Solution()
+print(s.addStrings("9", "100"))
