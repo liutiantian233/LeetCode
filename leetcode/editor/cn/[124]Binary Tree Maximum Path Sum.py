@@ -69,12 +69,13 @@ class Tree:
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         path = 0
-        print(root)
+        print(root.right)
         return path
 # leetcode submit region end(Prohibit modification and deletion)
 
 s = Solution()
-n = Tree()
-for i in [-10,9,20,0,0,15,7]:
-    n.add(i)
-print(n.root.left.left.val)
+n_1 = TreeNode()
+n_1.val = 1
+n_1.left = 2
+n_1.right = 3
+print(s.maxPathSum(n_1))
