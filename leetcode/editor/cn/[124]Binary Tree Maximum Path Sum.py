@@ -40,6 +40,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 
 from typing import Optional
+import sys
 
 
 # Definition for a binary tree node.
@@ -72,17 +73,36 @@ class Tree:
 
 
 class Solution:
+    def __init__(self):
+        self.max_path = -sys.maxsize
+
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        path = 0
-        print(root.right)
-        return path
+        def return_path(node: Optional[TreeNode]):
+            if not node:
+                return -sys.maxsize
+            left_node = return_path(node.left)
+            right_node = return_path(node.right)
+            self.max_path = max(self.max_path, node.val + left_node + right_node, left_node, right_node)
+            return max(node.val, node.val + left_node, node.val + right_node)
+        max_path = return_path(root)
+        return max(self.max_path, max_path)
+
 # leetcode submit region end(Prohibit modification and deletion)
 
 
 s = Solution()
+n_5 = TreeNode()
+n_5.val = 15
+n_4 = TreeNode()
+n_4.val = 7
+n_3 = TreeNode()
+n_3.val = 9
+n_2 = TreeNode()
+n_2.val = 20
+n_2.left = n_5
+n_2.right = n_4
 n_1 = TreeNode()
-n_1.val = 1
-n_1.left = 2
-n_1.right = 3
+n_1.val = -10
+n_1.left = n_3
+n_1.right = n_2
 print(s.maxPathSum(n_1))
-
