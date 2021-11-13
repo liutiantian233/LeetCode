@@ -41,16 +41,20 @@
 
 from typing import Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 class Tree:
     def __init__(self):
         self.root = None
         self.queue = []
+
     def add(self, element):
         node = TreeNode(element)
         if self.root is None:
@@ -66,12 +70,14 @@ class Tree:
                 self.queue.append(tree_node.right)
                 self.queue.pop(0)
 
+
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         path = 0
         print(root.right)
         return path
 # leetcode submit region end(Prohibit modification and deletion)
+
 
 s = Solution()
 n_1 = TreeNode()
