@@ -71,20 +71,27 @@ class Solution:
     def connect(self, root: 'Node') -> 'Node':
         if not root:
             return root
-        
-        def connect_node(node_queue):
-            next_node = []
-            for i in node_queue:
-                if i.left:
-                    next_node.append(i.left)
-                if i.right:
-                    next_node.append(i.right)
-            if len(node_queue) > 1:
-                for index in range(len(node_queue) - 1):
-                    node_queue[index].next = node_queue[index + 1]
-            if next_node:
-                connect_node(next_node)
-        connect_node([root])
+        root_node = root
+        first_node = None
+        next_node = None
+        while root_node:
+            if root_node.left:
+                if first_node is None:
+                    first_node = root_node.left
+                if next_node is not None:
+                    next_node.next = root_node.left
+                next_node = root_node.left
+            if root_node.right:
+                if first_node is None:
+                    first_node = root_node.right
+                if next_node is not None:
+                    next_node.next = root_node.right
+                next_node = root_node.right
+            root_node = root_node.next
+            if root_node is None:
+                root_node = first_node
+                first_node = None
+                next_node = None
         return root
 
 # leetcode submit region end(Prohibit modification and deletion)
